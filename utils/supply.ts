@@ -1,9 +1,9 @@
 import BigNumber from "bignumber.js";
 import { getContract } from "./web3";
-import { CAKE, DEAD } from "./constants";
+import { FIRE, DEAD } from "./constants";
 import bep20 from "./abis/bep20.json";
 
-const contract = getContract(bep20, CAKE);
+const contract = getContract(bep20, FIRE);
 
 export const getTotalSupply = async (): Promise<BigNumber> => {
   const supply = await contract.methods.totalSupply().call();

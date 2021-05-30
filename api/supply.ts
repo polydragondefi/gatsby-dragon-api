@@ -3,10 +3,10 @@ import { getBurnedSupply, getTotalSupply } from "../utils/supply";
 
 export default async (req: NowRequest, res: NowResponse): Promise<void> => {
   let totalSupply = await getTotalSupply();
-  totalSupply = totalSupply.div(1e18);
+  totalSupply = totalSupply.div(1e9);
 
   let burnedSupply = await getBurnedSupply();
-  burnedSupply = burnedSupply.div(1e18);
+  burnedSupply = burnedSupply.div(1e9);
 
   const circulatingSupply = totalSupply.minus(burnedSupply);
 

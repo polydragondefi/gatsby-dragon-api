@@ -5,7 +5,7 @@ import pairABI from "./abis/pair.json";
 import masterChefABI from "./abis/masterchef.json";
 import smartChefABI from "./abis/smartchef.json";
 import { getContract, getWeb3 } from "./web3";
-import { CAKE, CAKE_BNB_FARM, CAKE_BNB_TOKEN, CAKE_TOKEN, MASTERCHEF_CONTRACT, WBNB_TOKEN } from "./constants";
+import { FIRE, FIRE_MATIC_FARM, FIRE_MATIC_TOKEN, FIRE_TOKEN, MASTERCHEF_CONTRACT, WMATIC_TOKEN } from "./constants";
 import { pools } from "./pools";
 import { multicall } from "./multicall";
 
@@ -21,7 +21,7 @@ export const getTotalStaked = async (address: string, block: string): Promise<nu
 
   try {
     // Cake balance in wallet.
-    const cakeContract = getContract(bep20ABI, CAKE, true);
+    const cakeContract = getContract(bep20ABI, FIRE, true);
     const cakeBalance = await cakeContract.methods.balanceOf(address).call(undefined, blockNumber);
     balance = balance.plus(cakeBalance);
   } catch (error) {
@@ -31,20 +31,20 @@ export const getTotalStaked = async (address: string, block: string): Promise<nu
   try {
     // CAKE-BNB farm.
     const masterContract = getContract(masterChefABI, MASTERCHEF_CONTRACT, true);
-    const cakeBnbContract = getContract(pairABI, CAKE_BNB_FARM, true);
+    const cakeBnbContract = getContract(pairABI, FIRE_MATIC_FARM, true);
     const totalSupplyLP = await cakeBnbContract.methods.totalSupply().call(undefined, blockNumber);
     const reservesLP = await cakeBnbContract.methods.getReserves().call(undefined, blockNumber);
     const cakeBnbBalance: UserInfoResult = await masterContract.methods
       .userInfo(1, address)
       .call(undefined, blockNumber);
     const pair: Pair = new Pair(
-      new TokenAmount(CAKE_TOKEN, reservesLP._reserve0.toString()),
-      new TokenAmount(WBNB_TOKEN, reservesLP._reserve1.toString())
+      new TokenAmount(FIRE_TOKEN, reservesLP._reserve0.toString()),
+      new TokenAmount(WMATIC_TOKEN, reservesLP._reserve1.toString())
     );
     const cakeLPBalance = pair.getLiquidityValue(
       pair.token0,
-      new TokenAmount(CAKE_BNB_TOKEN, totalSupplyLP.toString()),
-      new TokenAmount(CAKE_BNB_TOKEN, cakeBnbBalance.amount.toString()),
+      new TokenAmount(FIRE_MATIC_TOKEN, totalSupplyLP.toString()),
+      new TokenAmount(FIRE_MATIC_TOKEN, cakeBnbBalance.amount.toString()),
       false
     );
     balance = balance.plus(new BigNumber(cakeLPBalance.toSignificant(18)).times(1e18));
@@ -82,5 +82,5 @@ export const getTotalStaked = async (address: string, block: string): Promise<nu
     console.error(`Pools error: ${error}`);
   }
 
-  return balance.div(1e18).toNumber();
+  return balance.div(1e9).toNumber();
 };

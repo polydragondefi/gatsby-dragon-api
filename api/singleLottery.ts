@@ -10,10 +10,10 @@ export const lottery = async (
 ): Promise<
   | SingleLottery
   | {
-      error?: string;
-      errorMessage?: string;
-      maxLotteryNumber?: number;
-    }
+    error?: string;
+    errorMessage?: string;
+    maxLotteryNumber?: number;
+  }
 > => {
   const issueIndex = await getIssueIndex();
   if (typeof issueIndex !== "number") {

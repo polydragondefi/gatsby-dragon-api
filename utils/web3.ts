@@ -1,22 +1,21 @@
 import Web3 from "web3";
 
-const BSC_NODE_RPC = [
-  "https://bsc-dataseed.binance.org/",
-  "https://bsc-dataseed1.defibit.io/",
-  "https://bsc-dataseed1.ninicoin.io/",
+const MATIC_NODE_RPC = [
+  "https://rpc-mainnet.matic.quiknode.pro",
+  "https://rpc-mainnet.maticvigil.com",
+  "https://matic-mainnet-full-rpc.bwarelabs.com",
 ];
 
-const BSC_ARCHIVE_NODE_RPC = [
-  "https://bsc-private-dataseed1.nariox.org/",
-  "https://bsc-private-dataseed3.nariox.org/",
-  "https://bsc-private-dataseed4.nariox.org/",
-  "https://bsc-private-dataseed5.nariox.org/",
+const MATIC_ARCHIVE_NODE_RPC = [
+  "https://rpc-mainnet.matic.quiknode.pro",
+  "https://rpc-mainnet.maticvigil.com",
+  "https://matic-mainnet-full-rpc.bwarelabs.com",
 ];
 
 export const getWeb3 = (archive = false): Web3 => {
   const provider: string = archive
-    ? BSC_ARCHIVE_NODE_RPC[Math.floor(Math.random() * BSC_ARCHIVE_NODE_RPC.length)]
-    : BSC_NODE_RPC[Math.floor(Math.random() * BSC_NODE_RPC.length)];
+    ? MATIC_ARCHIVE_NODE_RPC[Math.floor(Math.random() * MATIC_ARCHIVE_NODE_RPC.length)]
+    : MATIC_NODE_RPC[Math.floor(Math.random() * MATIC_NODE_RPC.length)];
 
   return new Web3(new Web3.providers.HttpProvider(provider, { timeout: 30000 }));
 };
