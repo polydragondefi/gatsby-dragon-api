@@ -30,7 +30,7 @@ export const lottery = async (
   const { numbers1: numbers1Prom, numbers2: numbers2Prom } = getSingleLotteryBatch(lotteryNumber);
   const numbers1 = await numbers1Prom;
   const numbers2Res = await numbers2Prom;
-  const numbers2: Array<number> = numbers2Res.map((n) => new BigNumber(n).div(1e18).toNumber());
+  const numbers2: Array<number> = numbers2Res.map((n) => new BigNumber(n).div(1e9).toNumber());
 
   const lotteryDate = generateLotteryDate(lotteryNumber);
   const ratesToUse = getRates(lotteryNumber);

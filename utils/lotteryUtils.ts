@@ -97,7 +97,7 @@ const createLotteryItem = async (
 ) => {
   const numbers1 = await numbers1Prom;
   const numbers2Res = await numbers2Prom;
-  const numbers2: Array<number> = numbers2Res.map((n) => parseInt(n) / 1e18);
+  const numbers2: Array<number> = numbers2Res.map((n) => parseInt(n) / 1e9);
 
   finalNumbers.push({
     issueIndex: index,
