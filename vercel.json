@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/api/v1/:match*",
-      "destination": "https://api.pancakeswap.finance/api/v1/:match*"
+      "destination": "https://api.polydragon.io/api/v1/:match*"
     },
     {
       "source": "/api/governance/vote/:address",
@@ -32,8 +32,8 @@
           "value": "*"
         },
         {
-          "key" : "Cache-Control",
-          "value" : "s-maxage=60, stale-while-revalidate"
+          "key": "Cache-Control",
+          "value": "s-maxage=60, stale-while-revalidate"
         }
       ]
     },
@@ -53,8 +53,8 @@
           "value": "*"
         },
         {
-          "key" : "Cache-Control",
-          "value" : "no-cache, no-store, must-revalidate"
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
         }
       ]
     },
@@ -74,8 +74,8 @@
           "value": "*"
         },
         {
-          "key" : "Cache-Control",
-          "value" : "public, max-age=60, s-max-age=60"
+          "key": "Cache-Control",
+          "value": "public, max-age=60, s-max-age=60"
         }
       ]
     }

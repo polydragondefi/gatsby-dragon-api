@@ -7,12 +7,6 @@
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn format",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "dependencies": {
     "@ethersproject/abi": "^5.0.13",
     "@pancakeswap-libs/sdk": "^1.0.1",
