@@ -7,9 +7,9 @@ const MATIC_NODE_RPC = [
 ];
 
 const MATIC_ARCHIVE_NODE_RPC = [
+  "https://matic-mainnet-archive-rpc.bwarelabs.com",
   "https://rpc-mainnet.matic.quiknode.pro",
   "https://rpc-mainnet.maticvigil.com",
-  "https://matic-mainnet-full-rpc.bwarelabs.com",
 ];
 
 export const getWeb3 = (archive = false): Web3 => {
