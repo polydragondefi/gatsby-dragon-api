@@ -75,3 +75,4 @@ export default async (req: NowRequest, res: NowResponse): Promise<void> => {
   const data = await handleAPICall(req.query);
   res.status(200).send(data);
 };
+
