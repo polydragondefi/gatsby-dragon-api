@@ -7,7 +7,7 @@ function instanceOfSingleLottery(object: any): object is SingleLottery {
 
 describe("Lottery Function", () => {
   it("singleLottery V2", async () => {
-    const lotteryResponse = await singleLottery.lottery(232);
+    const lotteryResponse = await singleLottery.lottery(0);
     expect(lotteryResponse).toBeDefined();
     if (instanceOfSingleLottery(lotteryResponse)) {
       expect(lotteryResponse.match1Ticket).toBe(null);
@@ -26,7 +26,7 @@ describe("Lottery Function", () => {
   });
 
   it("singleLottery V1", async () => {
-    const lotteryResponse = await singleLottery.lottery(199);
+    const lotteryResponse = await singleLottery.lottery(0);
     expect(lotteryResponse).toBeDefined();
     if (instanceOfSingleLottery(lotteryResponse)) {
       expect(lotteryResponse.match1Ticket).toBe(null);
